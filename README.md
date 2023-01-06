@@ -1,8 +1,25 @@
 # CPU
  4bitCPU folder, containing subfolders with board specific Arduino projects.
 
+Release v1.0 - Full Functionality
+
  Currently implemented:
  - CPU_ALU
  - CPU_MANUAL
+ - Global reset
+ - Demo modes
 
- First version with basic working functionality, including CAN bus communication between boards. Communication is still buggy after reset of ALU board, needs debugging ...
+ Requires the following libraries:
+
+ https://github.com/paladin32776/LED_CPU
+ https://github.com/paladin32776/PCA9955
+ https://github.com/paladin32776/NoBounceButtons
+ https://github.com/paladin32776/EnoughTimePassed
+ https://github.com/sandeepmistry/arduino-CAN
+
+If using PCA9955B instead of PCA9955, please get:
+
+https://github.com/paladin32776/PCA9955B
+
+and modify the LED_CPU library accordingly (replace PCA9955 with PCA9955B).
+
