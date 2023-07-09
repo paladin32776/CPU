@@ -1,0 +1,397 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"CA",
+				"CAN_send_reset"
+			],
+			[
+				"en",
+				"enough_time"
+			],
+			[
+				"etp_",
+				"etp_sync"
+			],
+			[
+				"de",
+				"demo_flip_flag"
+			],
+			[
+				"PCA",
+				"PCA_VARIANT"
+			],
+			[
+				"Wind",
+				"WindDirEntry"
+			],
+			[
+				"W",
+				"WindDirEntry"
+			],
+			[
+				"stdi",
+				"stdio.h\tstandard header (deprecated)"
+			],
+			[
+				"Shif",
+				"Shift-Cmd-Right"
+			],
+			[
+				"man",
+				"mandatory"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: A\t",
+				"Package Control: Add Repository"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
+			[
+				"JSON",
+				"Set Syntax: JSON"
+			],
+			[
+				"PA",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"print (sys.version)",
+			"import sys",
+			"print (sys.version)",
+			"import sys",
+			"print(\"dfdsf\")",
+			"print \"sdafdsf\"",
+			"3*5",
+			"quit()",
+			"__version__()",
+			"__version__",
+			"import cv2",
+			"x",
+			"x=2"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/gfattinger/Documents/Arduino/CPU/CPU_CONTROL",
+		"/Users/gfattinger/Documents/Arduino/libraries/DISP_CPU"
+	],
+	"file_history":
+	[
+		"/Users/gfattinger/Documents/Arduino/libraries/TFT_eSPI/User_Setup.h",
+		"/Users/gfattinger/Documents/Arduino/libraries/DISP_CPU/DISP_CPU.h",
+		"/Users/gfattinger/Documents/Arduino/CPU/CPU_CONTROL/CPU_CONTROL.ino",
+		"/Users/gfattinger/Documents/Arduino/ILI9341_Touch_eSPI_Test/ILI9341_Touch_eSPI_Test.ino",
+		"/Users/gfattinger/Documents/Arduino/libraries/LED_CPU/LED_CPU.cpp",
+		"/Users/gfattinger/Documents/Arduino/libraries/LED_CPU/LED_CPU.h",
+		"/Users/gfattinger/Documents/KiCad/CPU_V2/CPU_CONTROL_UNIT_V2/CPU_CONTROL_UNIT_V2.csv",
+		"/Users/gfattinger/Documents/Arduino/ESP32_SPI_test/ESP32_SPI_test.ino",
+		"/usr/local/lib/python3.8/site-packages/esptool/targets/esp32.py",
+		"/usr/local/lib/python3.8/site-packages/esptool/__main__.py",
+		"/usr/local/bin/esptool.py",
+		"/Users/gfattinger/Documents/Arduino/CPU/CPU_ALU/CPU_ALU.ino",
+		"/Users/gfattinger/Library/Arduino15/packages/esp32/hardware/esp32/1.0.4/platform.txt",
+		"/Users/gfattinger/Library/Arduino15/packages/esp32/tools/esptool_py/2.6.1/esptool.py",
+		"/Users/gfattinger/Documents/Arduino/libraries/EnoughTimePassed/examples/etp_demo/etp_demo.ino",
+		"/Users/gfattinger/Documents/Arduino/libraries/EnoughTimePassed/EnoughTimePassed.h",
+		"/Users/gfattinger/Documents/Arduino/libraries/EnoughTimePassed/EnoughTimePassed.cpp",
+		"/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/WString.h",
+		"/Users/gfattinger/.ssh/known_hosts",
+		"/Volumes/boot/wpa_supplicant.conf",
+		"/Users/gfattinger/Desktop/Passwords",
+		"/Users/gfattinger/Documents/NewHouse/Automation/LegendText.txt",
+		"/Users/gfattinger/Desktop/DST_Funktion.txt",
+		"/Users/gfattinger/Documents/NewHouse/Appliances/FINAL_Appliances_20210930",
+		"/Users/gfattinger/Documents/NewHouse/Automation/Loxone_Hardware",
+		"/Users/gfattinger/Documents/NewHouse/Permit/PropertyInfo",
+		"/Users/gfattinger/Documents/NewHouse/Permit/GC - Chris Bump/SubCons",
+		"/Users/gfattinger/Desktop/backup_codes.txt",
+		"/Users/gfattinger/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/31F32F41-D6CC-49B5-8056-EB0D03BB4FD6/CoolTerm Capture 2021-05-28 20-47-47.txt",
+		"/Volumes/MKS SBASE 2/covercal.nc",
+		"/Volumes/MKS SBASE 2/CaseLEDconn.nc",
+		"/Volumes/MKS SBASE 2/CasePOWERconn.nc",
+		"/Volumes/MKS SBASE 2/casecal.nc",
+		"/Users/gfattinger/Documents/CNC/CasePOWERconn.nc",
+		"/Users/gfattinger/Documents/CNC/cover.nc",
+		"/Users/gfattinger/Documents/CNC/CaseLEDconn.nc",
+		"/Users/gfattinger/Documents/Arduino/libraries/Arduino-HomeKit-ESP8266/examples/Example04_MultipleAccessories/my_accessory.c",
+		"/Users/gfattinger/Documents/Arduino/libraries/ConfigFileJSON/README.md",
+		"/Users/gfattinger/Documents/KiCad/WiHome_RGB/fp-lib-table",
+		"/Users/gfattinger/Documents/KiCad/WiHome_RGB/WiHome_RGB.xml",
+		"/Users/gfattinger/Documents/KiCad/WiHome_RGB/README.md",
+		"/Users/gfattinger/Library/Arduino15/packages/esp8266/hardware/esp8266/2.6.3/tools/boards.txt.py",
+		"/Users/gfattinger/Downloads/flows.json",
+		"/Users/gfattinger/Library/Arduino15/packages/esp8266/hardware/esp8266/2.6.3/boards.txt",
+		"/Users/gfattinger/Library/Arduino15/preferences.txt",
+		"/Users/gfattinger/Documents/Arduino/libraries/MultiDisp7/MultiDisp7.h",
+		"/Users/gfattinger/Documents/Arduino/libraries/CoogleIOT/README.md",
+		"/Users/gfattinger/Documents/Arduino/libraries/NoBounceButtons/NoBounceButtons.h",
+		"/Users/gfattinger/Documents/Arduino/libraries/NoBounceButtons/NoBounceButtons.cpp",
+		"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/machine/_limits.h",
+		"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/i386/_limits.h",
+		"/Users/gfattinger/Documents/Python/Wetter/GFSensorLib.py",
+		"/Users/gfattinger/Documents/Arduino/libraries/grbl/limits.c",
+		"/Users/gfattinger/Documents/Arduino/libraries/grbl/limits.h",
+		"/Users/gfattinger/Documents/Arduino/libraries/NoBounceButtons/Readme.md",
+		"/Users/gfattinger/Documents/NewHouse/Appliances/Bosch_Applicances",
+		"/Users/gfattinger/Downloads/CoolTermLinux32Bit/Linux System Requirements.txt",
+		"/Users/gfattinger/Downloads/CoolTermLinux32Bit/ReadMe.txt",
+		"/Users/gfattinger/Downloads/install_xusb/readme.txt",
+		"/Users/gfattinger/Downloads/Driver install/Read Me.txt",
+		"/Users/gfattinger/Documents/Python/Wetter/config.json",
+		"/Users/gfattinger/Documents/Python/UDP/udp.py",
+		"/Volumes/MACINSTALL/network/my-network",
+		"/Users/gfattinger/Documents/KiCad/GateOpener_Wifi_v3/GateOpener_Wifi_v3.xml",
+		"/Users/gfattinger/Desktop/xfinity_account",
+		"/Users/gfattinger/Documents/Python/my-packages/toupcam/__init__.py",
+		"/Users/gfattinger/Documents/Python/my-packages/pycnc/__init__.py",
+		"/Users/gfattinger/Documents/Python/AmScope/__init__.py",
+		"/Users/gfattinger/Documents/Python/AmScope/toupcam.py",
+		"/Users/gfattinger/Documents/Python/AmScope/docu/requirements.txt",
+		"/Users/gfattinger/Documents/Python/AmScope/docu/README.md",
+		"/Users/gfattinger/Documents/Python/AmScope/docu/LICENSE",
+		"/Users/gfattinger/Documents/Python/my-packages/drill_lib/__init__.py",
+		"/Users/gfattinger/.bash_profile",
+		"/usr/local/lib/python3.7/site-packages/altgraph/Graph.py",
+		"/usr/local/lib/python3.7/site-packages/pip/_internal/exceptions.py",
+		"/usr/local/lib/python3.7/site-packages/serial/__init__.py",
+		"/usr/local/lib/python3.7/site-packages/py2app/create_pluginbundle.py",
+		"/usr/local/lib/python3.7/site-packages/py2app/script_py2applet.py",
+		"/usr/local/lib/python3.7/site-packages/py2app/util.py",
+		"/usr/local/lib/python3.7/site-packages/py2app/filters.py",
+		"/usr/local/lib/python3.7/site-packages/py2app/build_app.py",
+		"/usr/local/lib/python3.7/site-packages/pycnc/pycnc.py",
+		"/usr/local/lib/python3.7/site-packages/altgraph/GraphUtil.py",
+		"/usr/local/lib/python3.7/site-packages/altgraph/ObjectGraph.py",
+		"/usr/local/lib/python3.7/site-packages/pycnc/__init__.py",
+		"/usr/local/lib/python3.7/site-packages/altgraph/GraphStat.py",
+		"/usr/local/lib/python3.7/site-packages/altgraph/Dot.py",
+		"/usr/local/lib/python3.7/site-packages/altgraph/__init__.py",
+		"/Volumes/MKS SBASE 1/config.txt",
+		"/Users/gfattinger/Documents/Python/DrillMaster/UI_DrillMaster.ui",
+		"/Users/gfattinger/Documents/Python/AmScope/examples/capture_loop.py",
+		"/Users/gfattinger/Documents/Python/AmScope/osx/libtoupcam.dylib",
+		"/Users/gfattinger/Documents/Python/AmScope/core.py",
+		"/Users/gfattinger/Documents/Python/AmScope/make.sh",
+		"/Users/gfattinger/Documents/Python/AmScope/toupcam.h",
+		"/Users/gfattinger/Downloads/toupcam_sdk_20190227/toupcamsdk 2/samples/demosimplest/demosimplest.cpp",
+		"/Users/gfattinger/Fusion 360 CAM/nc/1001.nc",
+		"/Users/gfattinger/Documents/Python/LaserExpose/UI_LaserExpose.ui",
+		"/Users/gfattinger/Documents/Python/LaserExpose/qt_test.py",
+		"/Users/gfattinger/Documents/Python/test/qt_test.py",
+		"/Users/gfattinger/Documents/Python/test/qt_test.ui",
+		"/Users/gfattinger/Documents/openpnp-capture/bootstrap_osx.sh",
+		"/Users/gfattinger/Documents/openpnp-capture/LICENSE.txt",
+		"/Users/gfattinger/Desktop/MKS_BASE_backup/MKS SBASE 1/new/config.txt",
+		"/Users/gfattinger/Desktop/MKS_BASE_backup/MKS SBASE 1/config.txt",
+		"/Volumes/MKS SBASE 1/testX.txt",
+		"/Volumes/MKS SBASE 1/FT231XS_breakout.nc",
+		"/Users/gfattinger/Documents/KiCad/Uhr/AutoProg/FT231XS_breakout/GERBER/FT231XS_breakout.nc",
+		"/Volumes/MKS SBASE 1/test.nc",
+		"/Users/gfattinger/Desktop/TK/TanteKarla.txt",
+		"/Users/gfattinger/Library/Application Support/Autodesk/webdeploy/production/1f6f62171e87bef6c49d3d8f302bbd01cea013a8/Autodesk Fusion 360.app/Contents/Libraries/Applications/Fusion/Fusion/Server/Fusion/Configuration/ThreadData/ISOMetricprofile_Custom.xml",
+		"/Users/gfattinger/Documents/ESP8266_Modules_Pinouts/README.md",
+		"/Users/gfattinger/Documents/KiCad/ExposeResTest/ExposeResTest/FAB/ExposeResTest.nc",
+		"/Volumes/MKS SBASE 1/ExposeResTest.nc",
+		"/Volumes/MKS SBASE 2/config.txt",
+		"/Users/gfattinger/Documents/KiCad/Uhr/AutoProg/GERBER/AutoProg.nc",
+		"/Volumes/MKS SBASE 1/AutoProg.nc",
+		"/Users/gfattinger/Documents/NodeRed/WiHome_NodeRed/WiHome_subflows.json",
+		"/Users/gfattinger/Documents/NodeRed/WiHome_NodeRed/WiHome_subflows",
+		"/Users/gfattinger/Downloads/arduino-esp32-master/cores/esp32/Arduino.h",
+		"/Library/Application Support/kicad/library/Display_Character.lib",
+		"/Users/gfattinger/Documents/KiCad/libraries/Displays_7-Segment_LCLED.lib",
+		"/Users/gfattinger/Documents/KiCad/libraries/TLC59116.lib",
+		"/Users/gfattinger/Documents/KiCad/libraries/TLC59116.dcm",
+		"/Users/gfattinger/Documents/KiCad/Uhr/Display_Board/Disp7_klein_TLC59116-rescue.lib",
+		"/Users/gfattinger/Documents/KiCad/Uhr/Display_Board/Disp7_klein_TLC59116-rescue.dcm",
+		"/Users/gfattinger/Documents/KiCad/Uhr/Display_Board/sym-lib-table"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 161.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.help":
+	{
+		"height": 63.0
+	},
+	"pinned_build_system": "Packages/C++/C++ Single File.sublime-build",
+	"project": "CPU_CONTROL.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 216.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
