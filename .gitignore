@@ -2,3 +2,6 @@
 CPU_MANUAL/CPU_MANUAL.stc
 CPU_ALU/CPU_ALU.stc
 CPU_MANUAL/.theia/launch.json
+CPU_CONTROL/CPU_CONTROL.sublime-workspace
+CPU_CONTROL/CPU_CONTROL.sublime-project
+CPU_CONTROL/CPU_CONTROL.sublime-workspace
