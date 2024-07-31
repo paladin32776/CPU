@@ -80,7 +80,7 @@ void setup()
   led_manual->update(Data,Ctrl);
   // Debug output:
   if (demo_mode)
-    Serial.println("Setup Finished in TEST MODE.");
+    Serial.println("Setup Finished in DEMO MODE.");
   else
     Serial.println("Setup Finished in NORMAL MODE.");
 }
@@ -184,5 +184,3 @@ void loop()
     led_manual->update(Data, Ctrl); // Overflow and Negative not done yet ...
   }
 }
-
-
