@@ -75,7 +75,7 @@ void setup()
   led_alu->update(bus,ra,rb,rc,ctrl,neg,overflow);
   // Debug output:
   if (demo_mode)
-    Serial.println("Setup Finished in TEST MODE.");
+    Serial.println("Setup Finished in DEMO MODE.");
   else
     Serial.println("Setup Finished in NORMAL MODE.");
 }
@@ -193,5 +193,3 @@ void loop()
     led_alu->update(bus,ra,rb,rc,ctrl,neg,overflow); // Overflow and Negative not done yet ...
   }
 }
-
-
