@@ -98,11 +98,11 @@ void setup()
   }
   // Initializing registers, gates, and flags:
   reset();
-  CAN_send_reset();
+  CAN_send_reset(); // *** COMMENTED OUT FOR DEBUGGING ONLY ***
   led_control->update(Data,Ctrl, Counter, Ccount, Cset, Creset, Pcount, Pset);
   // Debug output:
   if (demo_mode)
-    Serial.println("Setup Finished in TEST MODE.");
+    Serial.println("Setup Finished in DEMO MODE.");
   else
     Serial.println("Setup Finished in NORMAL MODE.");
 }
@@ -180,40 +180,38 @@ void loop()
   //       Serial.println(Ctrl);
   //     }
 
-  //   // CAN bus receive section:
-  //   int packetSize = CAN.parsePacket();
-  //   if (packetSize)
-  //   {
-  //     // received a packet
-  //     Serial.print("Received ");
-  //     Serial.print("packet with id 0x");
-  //     Serial.print(CAN.packetId(), HEX);
-  //     if (!CAN.packetRtr())
-  //     {
-  //       Serial.print(" and length ");
-  //       Serial.println(packetSize);
-  //       if (packetSize==1)
-  //       {
-  //         unsigned char Cmd = (char)CAN.read();
-  //         Serial.printf("CMD: 0x%02X", Cmd);
-  //         if (Cmd==RESET_CMD_BYTE)
-  //           reset();
-  //       }
-  //       else
-  //         while (CAN.available())
-  //         {
-  //           char c = (char)CAN.read();
-  //           Serial.printf("0x%02X ", c);
-  //         }
-  //       Serial.println();
-  //     }
-  //     Serial.println();
-  //   }
+    // CAN bus receive section:
+    int packetSize = CAN.parsePacket();
+    if (packetSize)
+    {
+      // received a packet
+      Serial.print("Received ");
+      Serial.print("packet with id 0x");
+      Serial.print(CAN.packetId(), HEX);
+      if (!CAN.packetRtr())
+      {
+        Serial.print(" and length ");
+        Serial.println(packetSize);
+        if (packetSize==1)
+        {
+          unsigned char Cmd = (char)CAN.read();
+          Serial.printf("CMD: 0x%02X", Cmd);
+          if (Cmd==RESET_CMD_BYTE)
+            reset();
+        }
+        else
+          while (CAN.available())
+          {
+            char c = (char)CAN.read();
+            Serial.printf("0x%02X ", c);
+          }
+        Serial.println();
+      }
+      Serial.println();
+    }
 
   //   // Update LEDs:
     disp_control->setcol(Counter);
     led_control->update(Data, Ctrl, Counter, Ccount, Cset, Creset, Pcount, Pset); // Overflow and Negative not done yet ...
   }
 }
-
-
