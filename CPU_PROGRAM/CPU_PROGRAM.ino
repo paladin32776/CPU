@@ -28,16 +28,12 @@
 #define CTRL_BITS 6
 #define COUNTER_BITS 4
 
-unsigned char demo_mode=0;
+unsigned char demo_mode=1;
 
 unsigned char Data = 0;
-unsigned char Ctrl = 0;
 unsigned char Counter = 0;
 unsigned char Ccount = 0;
 unsigned char Cset = 0;
-unsigned char Creset = 0;
-unsigned char Pcount = 0;
-unsigned char Pset = 0;
 
 NoBounceButtons nbb;
 unsigned char button;
@@ -49,21 +45,17 @@ unsigned char button;
 EnoughTimePassed etp_demo(1000);  // Blink period (ms) in demo mode
 unsigned char demo_flip_flag=0;
 
-LED_CONTROL *led_control;
-DISP_CONTROL *disp_control;
+LED_PROGRAM *led_program;
+DISP_PROGRAM *disp_program;
 
 // TFT_eSPI *tft;
 
 void reset()
 {
   Data = 0;
-  Ctrl = 0;
   Counter = 0;
   Ccount = 0;
   Cset = 0;
-  Creset = 0;
-  Pcount = 0;
-  Pset = 0;
 }
 
 void CAN_send_reset()
@@ -79,7 +71,7 @@ void setup()
 {
   Serial.begin(115200);
   while (!Serial);
-  Serial.println("CPU CONTROL UNIT BOARD");
+  Serial.println("CPU PROGRAM MEMORY BOARD");
   // Setting up buttons:
   button = nbb.create(BUTTON_PIN);
   // for (int n=0; n<DATA_BITS; n++)
@@ -87,9 +79,9 @@ void setup()
   // for (int n=0; n<CTRL_BITS; n++)
   //   CtrlButtons[n] = nbb.create(CtrlButtonPins[n]);
   // Setting up LEDs:
-  led_control = new LED_CONTROL();
+  led_program = new LED_PROGRAM();
   // Setting up the display:
-  disp_control = new DISP_CONTROL();
+  disp_program = new DISP_PROGRAM();
   // start the CAN bus at 1 Mbps
   if (!CAN.begin(1E6))
   {
@@ -98,8 +90,8 @@ void setup()
   }
   // Initializing registers, gates, and flags:
   reset();
-  // CAN_send_reset(); // *** COMMENTED OUT FOR DEBUGGING ONLY ***
-  led_control->update(Data,Ctrl, Counter, Ccount, Cset, Creset, Pcount, Pset);
+  //CAN_send_reset(); // *** COMMENTED OUT FOR DEBUGGING ONLY ***
+  led_program->update(Data, Counter, Ccount, Cset);
   // Debug output:
   if (demo_mode)
     Serial.println("Setup Finished in DEMO MODE.");
@@ -111,7 +103,7 @@ void loop()
 {
   // Call function to update status of all buttons:
   nbb.check();
-  disp_control->check();
+  disp_program->check();
   // Check for buttons pressed:
   if (nbb.action(button)>0)
   {
@@ -138,20 +130,17 @@ void loop()
   {
     Serial.println(demo_flip_flag);
     if (!demo_flip_flag)
-      led_control->update(10,0b101010,10,1,0,1,0,1);
+      led_program->update(10,10,1,0);
     else
-      led_control->update(5,0b010101,5,0,1,0,1,0);
+      led_program->update(5,5,0,1);
     demo_flip_flag = !demo_flip_flag;
   }
   else if (!demo_mode && etp_demo.enough_time())  // Regular MANUAL CONTROL mode
   {
       if ((Counter++)==15)
         Counter = 0;
-      Ctrl = disp_control->get_ctrl(Counter);
-      Cset = disp_control->get_cset(Counter);
-      Creset = disp_control->get_creset(Counter);
-      Pcount = disp_control->get_pcount(Counter);
-      Pset = disp_control->get_pset(Counter);
+      // Cset = disp_program->get_cset(Counter);
+      // Creset = disp_program->get_creset(Counter);
   //   for (int n=0; n<DATA_BITS; n++)
   //     if (nbb.action(DataButtons[n])==NBB_CLICK)
   //     {
@@ -211,7 +200,7 @@ void loop()
     }
 
   //   // Update LEDs:
-    disp_control->setcol(Counter);
-    led_control->update(Data, Ctrl, Counter, Ccount, Cset, Creset, Pcount, Pset); // Overflow and Negative not done yet ...
+    disp_program->setrow(Counter);
+    led_program->update(Data, Counter, Ccount, Cset); // Overflow and Negative not done yet ...
   }
 }
