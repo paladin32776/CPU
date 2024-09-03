@@ -7,6 +7,7 @@ Release v1.0 - Full Functionality
  - CPU_ALU
  - CPU_MANUAL
  - CPU_CONTROL (not fully functional yet, just demo)
+ - CPU_PROGRAM (not fully functional yet, just demo)
  - Global reset
  - Demo modes
 
@@ -19,6 +20,7 @@ Release v1.0 - Full Functionality
  https://github.com/sandeepmistry/arduino-CAN
  https://github.com/paladin32776/DISP_CPU
  https://github.com/Bodmer/TFT_eSPI
+ https://github.com/sandeepmistry/arduino-CAN
 
 
 If using PCA9955B instead of PCA9955, please get:
@@ -29,10 +31,10 @@ and modify the LED_CPU library accordingly (replace PCA9955 with PCA9955B).
 
 Arduino compile settings:
 
-Board: ESP32 Dev Module
-CPU Frequency: 240MHz
-Flash Frequency: 80 MHz
-Flash Mode: QIO
-Flash Size: 4MB (32Mb)
-Partition Scheme: Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)
-PSRAM: Disabled
+- Board: ESP32 Dev Module
+- CPU Frequency: 240MHz
+- Flash Frequency: 80 MHz
+- Flash Mode: QIO
+- Flash Size: 4MB (32Mb)
+- Partition Scheme: Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)
+- PSRAM: Disabled
