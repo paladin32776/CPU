@@ -5,8 +5,6 @@
 #include "NoBounceButtons.h"
 #include "EnoughTimePassed.h"
 #include "DISP_CPU.h"
-// #include <SPI.h>
-// #include <TFT_eSPI.h>      // Hardware-specific library
 
 #define BUTTON_PIN 0
 #define COUNT_BUTTON_PINS 18,17,16
@@ -116,8 +114,8 @@ void loop()
           break;
         default:
           break;
-        nbb.reset(button);
     }
+    nbb.reset(button);
   }
 
   if (demo_mode && etp_demo.enough_time()) // Demo mode, just blinking some leds
@@ -199,7 +197,7 @@ void loop()
       Pcount = disp_control->get_pcount(Counter);
       Pset = disp_control->get_pset(Counter);
       // CAN transmit to other boards
-      can->send_message(CTRL_CMD_BYTE, Ctrl);
+      can->send_message(CTRL_CMD_BYTE, Ctrl + (Pcount<<6) + (Pset<<7));
       //Update LEDs:
       disp_control->setrow(Counter);
       led_control->update(Data, Ctrl, Counter, Ccount, Cset, Creset, Pcount, Pset); // Overflow and Negative not done yet ...
