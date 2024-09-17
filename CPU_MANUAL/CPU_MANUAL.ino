@@ -1,13 +1,9 @@
 // Board: "ESP 32 Dev Module"
 
-#include <CAN.h>
+#include "CAN_CPU.h"
 #include "LED_CPU.h"
 #include "NoBounceButtons.h"
 #include "EnoughTimePassed.h"
-
-#define DATA_CMD_BYTE 0x00
-#define CTRL_CMD_BYTE 0x01
-#define RESET_CMD_BYTE 0xFF
 
 #define BUTTON_PIN 0
 #define DATA_BUTTON_PINS 12,13,14,15
@@ -24,6 +20,10 @@
 #define CTRL_BITS 6
 
 unsigned char demo_mode=0;
+
+// CAN driver
+CAN_CPU* can;
+uint8_t boards_alive=0;
 
 unsigned char Data = 0;
 unsigned char Ctrl = 0;
@@ -46,15 +46,6 @@ void reset()
   Ctrl = 0;
 }
 
-void CAN_send_reset()
-{
-  Serial.print("Sending reset command via CAN bus ... ");
-  CAN.beginPacket(0x12);
-  CAN.write(RESET_CMD_BYTE);
-  CAN.endPacket();
-  Serial.println("done.");
-}
-
 void setup()
 {
   Serial.begin(115200);
@@ -68,15 +59,11 @@ void setup()
     CtrlButtons[n] = nbb.create(CtrlButtonPins[n]);
   // Setting up LEDs:
   led_manual = new LED_MANUAL();
-  // start the CAN bus at 1 Mbps
-  if (!CAN.begin(1E6))
-  {
-    Serial.println("Starting CAN failed!");
-    while (1);
-  }
+  // Start CAN
+  can = new CAN_CPU(BOARD_ID_MANUAL);
   // Initializing registers, gates, and flags:
   reset();
-  CAN_send_reset();
+  can->send_message(RESET_CMD_BYTE);
   led_manual->update(Data,Ctrl);
   // Debug output:
   if (demo_mode)
@@ -89,6 +76,7 @@ void loop()
 {
   // Call function to update status of all buttons:
   nbb.check();
+  can->check();
   // Check for buttons pressed:
   if (nbb.action(button)>0)
   {
@@ -99,7 +87,7 @@ void loop()
           {
             demo_mode=0;
             reset();
-            CAN_send_reset();
+            can->send_message(RESET_CMD_BYTE);
           }
           break;
         case NBB_LONG_CLICK:
@@ -128,12 +116,8 @@ void loop()
         Serial.println("Data button pressed ...");
         nbb.reset(DataButtons[n]);
         Data = Data ^ (1<<n);
-        CAN.beginPacket(0x12);
-        CAN.write(DATA_CMD_BYTE);
-        CAN.write(Data);
-        CAN.endPacket();
-        Serial.println("Data=");
-        Serial.println(Data);
+        can->send_message(DATA_CMD_BYTE, Data);
+        Serial.printf("Data=%d\n", Data);
       }
 
     for (int n=0; n<CTRL_BITS; n++)
@@ -142,40 +126,39 @@ void loop()
         Serial.println("Ctrl button pressed ...");
         nbb.reset(CtrlButtons[n]);
         Ctrl = Ctrl ^ (1<<n);
-        CAN.beginPacket(0x12);
-        CAN.write(CTRL_CMD_BYTE);
-        CAN.write(Ctrl);
-        CAN.endPacket();
-        Serial.println("Ctrl=");
-        Serial.println(Ctrl);
+        if ((boards_alive & BOARD_ID_CONTROL) == 0)
+          can->send_message(CTRL_CMD_BYTE, Ctrl);
+        Serial.printf("Ctrl=%d\n", Ctrl);
       }
 
     // CAN bus receive section:
-    int packetSize = CAN.parsePacket();
-    if (packetSize)
+    if (can->message_available())
     {
       // received a packet
       Serial.print("Received ");
-      Serial.print("packet with id 0x");
-      Serial.print(CAN.packetId(), HEX);
-      if (!CAN.packetRtr())
+      uint8_t Cmd, Para, Para2;
+      switch (can->message_length())
       {
-        Serial.print(" and length ");
-        Serial.println(packetSize);
-        if (packetSize==1)
-        {
-          unsigned char Cmd = (char)CAN.read();
-          Serial.printf("CMD: 0x%02X", Cmd);
-          if (Cmd==RESET_CMD_BYTE)
-            reset();
-        }
-        else
-          while (CAN.available())
+        case 2:
+          can->get_message(Cmd, Para);
+          Serial.printf("CMD: 0x%02X  PARA: 0x%02X", Cmd, Para);
+          if (Cmd == BOARDS_CMD_BYTE)
           {
-            char c = (char)CAN.read();
-            Serial.printf("0x%02X ", c);
+            boards_alive = Para;
+            Serial.printf("\nBoards alive = %d\n", boards_alive);
           }
-        Serial.println();
+          break;
+        case 1:
+          can->get_message(Cmd);
+          Serial.printf("CMD: 0x%02X", Cmd);
+          if (Cmd == RESET_CMD_BYTE)
+            reset();
+          else if (Cmd == PING_CMD_BYTE)
+            can->send_message(PONG_CMD_BYTE, BOARD_ID_MANUAL);
+          break;
+        default:
+          can->clear_message();
+          break;
       }
       Serial.println();
     }
