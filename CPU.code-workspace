@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "CPU",
+			"path": "."
+		},
+		{
+			"name": "CAN_CPU",
+			"path": "../libraries/CAN_CPU"
+		},
+		{
+			"name": "DISP_CPU",
+			"path": "../libraries/DISP_CPU"
+		},
+		{
+			"name": "LED_CPU",
+			"path": "../libraries/LED_CPU"
+		},
+		{
+			"name": "TFT_eSPI",
+			"path": "../libraries/TFT_eSPI"
+		}
+	],
+	"settings": {}
+}
