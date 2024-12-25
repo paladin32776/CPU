@@ -15,10 +15,6 @@
 		{
 			"name": "LED_CPU",
 			"path": "../libraries/LED_CPU"
-		},
-		{
-			"name": "TFT_eSPI",
-			"path": "../libraries/TFT_eSPI"
 		}
 	],
 	"settings": {}
