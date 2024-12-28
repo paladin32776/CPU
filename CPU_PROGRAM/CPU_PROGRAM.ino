@@ -28,7 +28,7 @@ unsigned char Pset = 0;
 
 bool CounterChanged = true;
 int PcountChanged = 0;
-bool PsetChanged = false;
+int PsetChanged = 0;
 
 NoBounceButtons nbb;
 unsigned char button;
@@ -43,10 +43,11 @@ DISP_PROGRAM *disp_program;
 
 void reset()
 {
-  Data = 0;
   Counter = 0;
+  Data = disp_program->get_data(Counter);
   Pcount = 0;
   Pset = 0;
+  CounterChanged = true;
 }
 
 void setup()
@@ -110,36 +111,39 @@ void loop()
       led_program->update(5,5,0,1);
     demo_flip_flag = !demo_flip_flag;
   }
-  else if (!demo_mode && etp_demo.enough_time())  // Regular MANUAL CONTROL mode
+  else if (!demo_mode)  // Regular PROGRAM mode
   {
 
     // CAN bus receive section:
     if (can->message_available())
     {
       // received a packet
-      Serial.print("Received ");
+      // Serial.print("Received ");
       uint8_t Cmd, Para, Para2;
       switch (can->message_length())
       {
         case 2:
           can->get_message(Cmd, Para);
-          Serial.printf("CMD: 0x%02X  PARA: 0x%02X", Cmd, Para);
+          // if (Cmd<0xF0)
+          //   Serial.printf("Rx CMD: 0x%02X  PARA: 0x%02X\n", Cmd, Para);
           if (Cmd == CTRL_CMD_BYTE)
           {
-            PcountChanged =  (int)bitRead(Para,CTRL_BIT_PCOUNT) - (int)Pcount;
-            Pcount = bitRead(Para,CTRL_BIT_PCOUNT);
-            PsetChanged = (bitRead(Para,CTRL_BIT_PSET)!=Pset);
-            Pset = bitRead(Para,CTRL_BIT_PSET);
+            // PcountChange is +1 for rising edge, -1 for falling edge, and 0 for no change
+            PcountChanged =  (int)bitRead(Para, CTRL_BIT_PCOUNT) - (int)Pcount;
+            Pcount = bitRead(Para, CTRL_BIT_PCOUNT);
+            PsetChanged = (int)bitRead(Para, CTRL_BIT_PSET) - (int)Pset;
+            Pset = bitRead(Para, CTRL_BIT_PSET);
           }
           else if (Cmd == BOARDS_CMD_BYTE)
           {
             boards_alive = Para;
-            Serial.printf("\nBoards alive = %d\n", boards_alive);
+            // Serial.printf("\nBoards alive = %d\n", boards_alive);
           }
           break;
         case 1:
           can->get_message(Cmd);
-          Serial.printf("CMD: 0x%02X", Cmd);
+          // if (Cmd<0xF0 || Cmd==RESET_CMD_BYTE)
+          //   Serial.printf("Rx CMD: 0x%02X\n", Cmd);
           if (Cmd == RESET_CMD_BYTE)
             reset();
           else if (Cmd == PING_CMD_BYTE)
@@ -149,23 +153,35 @@ void loop()
           can->clear_message();
           break;
       }
-      Serial.println();
+      // Serial.println();
     }
 
     if (PcountChanged==1)
     {
-      if (Pset)
-        Counter = Data;
-      else
-        Counter = (Counter+1)%16;
+      Counter = (Counter+1)%16;
       PcountChanged = 0;
+      Data = disp_program->get_data(Counter);
+      CounterChanged = true;
+    }
+    if (PsetChanged==1)
+    {
+      Counter = Data;
+      PsetChanged = 0;
+      Data = disp_program->get_data(Counter);
       CounterChanged = true;
     }
 
     // Update LEDs:
-    if (CounterChanged)
-      disp_program->setrow(Counter);
-    if ((PcountChanged!=0) || PsetChanged || CounterChanged)
+    if ((PcountChanged!=0) || (PsetChanged!=0) || CounterChanged)
       led_program->update(Data, Counter, Pcount, Pset);
+    // Update display:
+    if (CounterChanged)
+    {  
+      disp_program->setrow(Counter);
+      // CAN transmit to other boards
+      can->send_message(DATA_CMD_BYTE, Data);
+      // Reset CounterChanged flag
+      CounterChanged = false;
+    }
   }
 }
